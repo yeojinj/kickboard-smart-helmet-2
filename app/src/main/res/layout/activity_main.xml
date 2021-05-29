@@ -93,7 +93,7 @@
         android:layout_marginLeft="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="1"
+        android:text="0"
         app:layout_constraintStart_toEndOf="@+id/btnLock"
         app:layout_constraintTop_toTopOf="@+id/btnLock" />
 

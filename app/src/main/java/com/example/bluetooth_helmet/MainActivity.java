@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
 
         mTvSendData =  (EditText) findViewById(R.id.tvSendData);
+        mTvLock =  (EditText) findViewById(R.id.tvLock);
+
         mBtnBluetoothOn = (Button)findViewById(R.id.btnBluetoothOn);
         mBtnBluetoothOff = (Button)findViewById(R.id.btnBluetoothOff);
         mBtnConnect = (Button)findViewById(R.id.btnConnect);
