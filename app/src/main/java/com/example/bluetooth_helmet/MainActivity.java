@@ -25,6 +25,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static java.security.AccessController.getContext;
+
 public class MainActivity extends AppCompatActivity {
     TextView mTvBluetoothStatus;
 
@@ -45,9 +53,13 @@ public class MainActivity extends AppCompatActivity {
     BluetoothDevice mBluetoothDevice;
     BluetoothSocket mBluetoothSocket;
 
+    IntentIntegrator qrScan;
+
     final static int BT_REQUEST_ENABLE = 1;
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
+    final static int QR_READ_STATUS = 4;
+
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     @Override
@@ -67,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         mBtnLock = (Button)findViewById(R.id.btnLock);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        qrScan = new IntentIntegrator(this);
 
 
         mBtnBluetoothOn.setOnClickListener(new Button.OnClickListener() {
@@ -90,17 +104,27 @@ public class MainActivity extends AppCompatActivity {
         mBtnSendData.setOnClickListener(new Button.OnClickListener() {  //헬멧 대여하기 버튼을 누르면 "1"이 전송됨
             @Override
             public void onClick(View view) {
-                if(mThreadConnectedBluetooth != null) {
-                    mThreadConnectedBluetooth.write("1");
-                    //mTvSendData.setText("");
-                }
+                //qrScan.setPrompt("Scanning...");
+                //qrScan.initiateScan();
+                Intent intent1 = new Intent("com.google.zxing.client.android.SCAN");
+                intent1.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                startActivityForResult(intent1, QR_READ_STATUS);
+
+
+//                if(mThreadConnectedBluetooth != null) {
+//                   mThreadConnectedBluetooth.write("1");
+//                    //mTvSendData.setText("");
+//                }
             }
         });
+
+
         mBtnLock.setOnClickListener(new Button.OnClickListener() {      //헬멧 반납하기 버튼을 누르면 "0"이 전송됨
             @Override
             public void onClick(View view) {
                 if(mThreadConnectedBluetooth != null) {
                     mThreadConnectedBluetooth.write("0");
+                    Toast.makeText(getApplicationContext(), "헬멧 반납 완료", Toast.LENGTH_LONG).show();
                     //mTvLock.setText("");
                 }
             }
@@ -145,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "블루투스가 이미 비활성화 되어 있습니다.", Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -156,6 +181,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "취소", Toast.LENGTH_LONG).show();
                     mTvBluetoothStatus.setText("블루투스 꺼짐");
                 }
+                break;
+
+            case QR_READ_STATUS:
+                Toast.makeText(MainActivity.this, "헬멧 대여 완료!", Toast.LENGTH_SHORT).show();
+                //IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                mThreadConnectedBluetooth.write("1");
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
