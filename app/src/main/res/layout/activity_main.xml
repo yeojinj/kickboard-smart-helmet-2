@@ -62,18 +62,6 @@
         app:layout_constraintStart_toStartOf="@+id/btnConnect"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
 
-    <EditText
-        android:id="@+id/tvSendData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="1"
-        app:layout_constraintStart_toEndOf="@+id/btnSendData"
-        app:layout_constraintTop_toTopOf="@+id/btnSendData" />
-
     <Button
         android:id="@+id/btnLock"
         android:layout_width="wrap_content"
@@ -84,17 +72,5 @@
         android:text="헬멧 반납하기"
         app:layout_constraintStart_toStartOf="@+id/btnSendData"
         app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
-
-    <EditText
-        android:id="@+id/tvLock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/btnLock"
-        app:layout_constraintTop_toTopOf="@+id/btnLock" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

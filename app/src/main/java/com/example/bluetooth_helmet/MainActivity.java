@@ -28,8 +28,8 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
     TextView mTvBluetoothStatus;
 
-    TextView mTvSendData;
-    TextView mTvLock;
+    //TextView mTvSendData;
+    //TextView mTvLock;
     Button mBtnBluetoothOn;
     Button mBtnBluetoothOff;
     Button mBtnConnect;
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
 
-        mTvSendData =  (EditText) findViewById(R.id.tvSendData);
-        mTvLock =  (EditText) findViewById(R.id.tvLock);
+//        mTvSendData =  (EditText) findViewById(R.id.tvSendData);
+//        mTvLock =  (EditText) findViewById(R.id.tvLock);
 
         mBtnBluetoothOn = (Button)findViewById(R.id.btnBluetoothOn);
         mBtnBluetoothOff = (Button)findViewById(R.id.btnBluetoothOff);
@@ -87,21 +87,21 @@ public class MainActivity extends AppCompatActivity {
                 listPairedDevices();
             }
         });
-        mBtnSendData.setOnClickListener(new Button.OnClickListener() {
+        mBtnSendData.setOnClickListener(new Button.OnClickListener() {  //헬멧 대여하기 버튼을 누르면 "1"이 전송됨
             @Override
             public void onClick(View view) {
                 if(mThreadConnectedBluetooth != null) {
-                    mThreadConnectedBluetooth.write(mTvSendData.getText().toString());
-                    mTvSendData.setText("");
+                    mThreadConnectedBluetooth.write("1");
+                    //mTvSendData.setText("");
                 }
             }
         });
-        mBtnLock.setOnClickListener(new Button.OnClickListener() {
+        mBtnLock.setOnClickListener(new Button.OnClickListener() {      //헬멧 반납하기 버튼을 누르면 "0"이 전송됨
             @Override
             public void onClick(View view) {
                 if(mThreadConnectedBluetooth != null) {
-                    mThreadConnectedBluetooth.write(mTvLock.getText().toString());
-                    mTvLock.setText("");
+                    mThreadConnectedBluetooth.write("0");
+                    //mTvLock.setText("");
                 }
             }
         });
