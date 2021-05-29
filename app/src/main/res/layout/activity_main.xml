@@ -13,6 +13,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
+        android:backgroundTint="#B2CCFF"
+        android:textColor="@color/black"
         android:text="블루투스 ON"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:backgroundTint="#FFA7A7"
+        android:textColor="@color/black"
         android:text="블루투스 OFF"
         app:layout_constraintStart_toEndOf="@+id/btnBluetoothOn"
         app:layout_constraintTop_toTopOf="@+id/btnBluetoothOn" />
@@ -32,7 +36,7 @@
         android:layout_width="170dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        android:text="status"
+        android:text="킥보드, 헬멧 연결"
         app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
         app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
 
@@ -41,25 +45,20 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:text="연결하기"
+        android:backgroundTint="#FAED7D"
+        android:textColor="@color/black"
+        android:text="블루투스 연결하기"
         app:layout_constraintStart_toStartOf="@+id/tvBluetoothStatus"
         app:layout_constraintTop_toBottomOf="@+id/tvBluetoothStatus" />
-
-    <TextView
-        android:id="@+id/tvReceiveData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Receive"
-        app:layout_constraintStart_toStartOf="@+id/btnSendData"
-        app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
 
     <Button
         android:id="@+id/btnSendData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="전송"
+        android:backgroundTint="#B2CCFF"
+        android:textColor="@color/black"
+        android:text="헬멧 대여하기"
         app:layout_constraintStart_toStartOf="@+id/btnConnect"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
 
@@ -71,8 +70,31 @@
         android:layout_marginLeft="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Send Data"
+        android:text="1"
         app:layout_constraintStart_toEndOf="@+id/btnSendData"
         app:layout_constraintTop_toTopOf="@+id/btnSendData" />
+
+    <Button
+        android:id="@+id/btnLock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFA7A7"
+        android:textColor="@color/black"
+        android:text="헬멧 반납하기"
+        app:layout_constraintStart_toStartOf="@+id/btnSendData"
+        app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
+
+    <EditText
+        android:id="@+id/tvLock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="1"
+        app:layout_constraintStart_toEndOf="@+id/btnLock"
+        app:layout_constraintTop_toTopOf="@+id/btnLock" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
